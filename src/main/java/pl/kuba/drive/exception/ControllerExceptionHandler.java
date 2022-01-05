@@ -15,6 +15,9 @@ public class ControllerExceptionHandler {
         if (ErrorMessage.NOT_FOUND.equals(e.getError())) {
             httpStatus = HttpStatus.NOT_FOUND;
         }
+        if (ErrorMessage.RESOURCE_EXISTS.equals(e.getError())){
+            httpStatus = HttpStatus.CONFLICT;
+        }
         return ResponseEntity.status(httpStatus).body(new ErrorInfo(e.getError().getMessage()));
     }
 }

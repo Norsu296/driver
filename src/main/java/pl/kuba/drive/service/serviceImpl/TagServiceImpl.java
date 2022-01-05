@@ -29,12 +29,20 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public TagDTO create(TagDTO tag) {
+        validateTagExists(tag);
         return tagMapper.toTagDTO(tagRepository.save(tagMapper.toTag(tag)));
     }
 
     @Override
     public void deleteById(Long id) {
         tagRepository.deleteById(id);
+    }
+
+
+    private void validateTagExists(TagDTO tag){
+        if(!tagRepository.findByName(tag.getName()).isPresent()) {
+            throw new ControllerException(ErrorMessage.RESOURCE_EXISTS);
+        }
     }
     
 }
