@@ -15,5 +15,7 @@ public interface TagService {
     TagDTO create(TagDTO advice);
 
     void deleteById(Long id);
+
+    TagDTO editNameById(Long id, String name);
     
 }

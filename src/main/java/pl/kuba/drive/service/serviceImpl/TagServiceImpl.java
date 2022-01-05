@@ -39,6 +39,15 @@ public class TagServiceImpl implements TagService {
         tagRepository.deleteById(id);
     }
 
+    @Override
+    public TagDTO editNameById(Long id, String name) {
+        return tagMapper.toTagDTO(tagRepository.findById(id)
+            .map(tagFromDb -> {
+                tagFromDb.setName(name);
+                return tagRepository.save(tagFromDb);
+        }).orElseThrow(() -> new ControllerException(ErrorMessage.NOT_FOUND)));
+    }
+
 
     private void validateTagExists(TagDTO tag){
         if(!tagRepository.findByName(tag.getName()).isPresent()) {
