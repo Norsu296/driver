@@ -1,6 +1,7 @@
 package pl.kuba.drive.service.serviceImpl;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import pl.kuba.drive.dto.mapper.QuestionMapper;
 import pl.kuba.drive.dto.model.QuestionDTO;
 import pl.kuba.drive.exception.ControllerException;
@@ -9,7 +10,7 @@ import pl.kuba.drive.repository.QuestionRepository;
 import pl.kuba.drive.service.QuestionService;
 
 import java.util.List;
-
+@Service
 @RequiredArgsConstructor
 public class QuestionServiceImpl implements QuestionService {
 

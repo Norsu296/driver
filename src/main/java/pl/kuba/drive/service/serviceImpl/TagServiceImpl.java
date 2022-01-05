@@ -1,6 +1,7 @@
 package pl.kuba.drive.service.serviceImpl;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import pl.kuba.drive.dto.mapper.TagMapper;
 import pl.kuba.drive.dto.model.TagDTO;
 import pl.kuba.drive.exception.ControllerException;
@@ -9,7 +10,7 @@ import pl.kuba.drive.repository.TagRepository;
 import pl.kuba.drive.service.TagService;
 
 import java.util.List;
-
+@Service
 @RequiredArgsConstructor
 public class TagServiceImpl implements TagService {
 

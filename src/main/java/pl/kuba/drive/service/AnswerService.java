@@ -12,7 +12,7 @@ public interface AnswerService {
 
     AnswerDTO findById(Long id);
 
-    AnswerDTO create(AnswerDTO answer);
-
     void deleteById(Long id);
+
+    AnswerDTO edit(AnswerDTO answerDTO);
 }
