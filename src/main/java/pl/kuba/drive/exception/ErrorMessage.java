@@ -2,7 +2,8 @@ package pl.kuba.drive.exception;
 
 public enum ErrorMessage {
 
-    NOT_FOUND("Resource does not exist");
+    NOT_FOUND("Resource does not exists"),
+    RESOURCE_EXISTS("Resource already exists");
 
     private String message;
 
