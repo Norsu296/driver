@@ -53,7 +53,7 @@ public class TagServiceImpl implements TagService {
 
 
     private void validateTagExists(TagDTO tag){
-        if(!tagRepository.findByName(tag.getName()).isPresent()) {
+        if(tagRepository.findByName(tag.getName()).isPresent()) {
             throw new ControllerException(ErrorMessage.RESOURCE_EXISTS);
         }
     }

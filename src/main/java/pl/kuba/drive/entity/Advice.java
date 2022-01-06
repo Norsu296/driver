@@ -26,7 +26,9 @@ public class Advice {
     )
     private List<Tag> tags;
 
-   @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @OneToMany(
+            mappedBy = "advice",
+            cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
     private List<Question> questions;
 
 

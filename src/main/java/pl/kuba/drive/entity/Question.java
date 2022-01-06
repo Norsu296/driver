@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+
 
 @Entity
 @Table(name = "questions")
@@ -21,5 +21,8 @@ public class Question {
             cascade = {CascadeType.MERGE, CascadeType.PERSIST}
             )
     private List<Answer> answers = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Advice advice;
 
 }
