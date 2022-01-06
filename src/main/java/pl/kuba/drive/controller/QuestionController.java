@@ -2,6 +2,7 @@ package pl.kuba.drive.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import pl.kuba.drive.dto.model.AnswerDTO;
 import pl.kuba.drive.dto.model.QuestionDTO;
 import pl.kuba.drive.service.QuestionService;
 
@@ -29,9 +30,19 @@ public class QuestionController {
         return questionService.create(questionDTO);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         questionService.deleteById(id);
+    }
+
+    @PatchMapping("/{id}/name")
+    public QuestionDTO editName(@PathVariable Long id, @RequestBody String name){
+        return questionService.editNameById(id, name);
+    }
+
+    @PatchMapping("/{id}/answers")
+    public QuestionDTO editAnswers(@PathVariable Long id, @RequestBody List<AnswerDTO> answers){
+        return questionService.editAnswersById(id, answers);
     }
     
     

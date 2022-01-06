@@ -30,7 +30,7 @@ public class TagController {
         return tagService.create(tagDTO);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         tagService.deleteById(id);
     }

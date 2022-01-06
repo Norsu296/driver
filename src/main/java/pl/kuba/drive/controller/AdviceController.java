@@ -30,7 +30,7 @@ public class AdviceController {
         return adviceService.create(adviceDTO);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         adviceService.deleteById(id);
     }
