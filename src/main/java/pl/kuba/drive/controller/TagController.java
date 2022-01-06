@@ -34,4 +34,9 @@ public class TagController {
     public void delete(@PathVariable Long id) {
         tagService.deleteById(id);
     }
+
+    @PatchMapping("/{id}/name")
+    public TagDTO editName(@PathVariable Long id, @RequestBody String name){
+        return tagService.editNameById(id, name);
+    }
 }
