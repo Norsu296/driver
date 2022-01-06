@@ -19,6 +19,5 @@ public interface AdviceService {
 
     AdviceDTO edit(AdviceDTO advice);
 
-    AdviceDTO editTagsByAdviceId(Long id, List<TagDTO> tags);
 
 }

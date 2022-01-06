@@ -40,8 +40,4 @@ public class AdviceController {
         return adviceService.edit(adviceDTO);
     }
 
-    @PatchMapping("/{id}")
-    public AdviceDTO editTagsByAdviceId(@PathVariable Long id, @RequestBody List<TagDTO> tags){
-        return adviceService.editTagsByAdviceId(id, tags);
-    }
 }

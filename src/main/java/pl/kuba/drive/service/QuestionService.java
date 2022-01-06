@@ -17,9 +17,8 @@ public interface QuestionService {
 
     void deleteById(Long id);
 
-    QuestionDTO editNameById(Long id, String name);
+    QuestionDTO edit(QuestionDTO questionDTO);
 
-    QuestionDTO editAnswersById(Long id, List<AnswerDTO> answers);
 
     
 }

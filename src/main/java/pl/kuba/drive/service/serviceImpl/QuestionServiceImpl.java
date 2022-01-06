@@ -6,6 +6,7 @@ import pl.kuba.drive.dto.mapper.AnswerMapper;
 import pl.kuba.drive.dto.mapper.QuestionMapper;
 import pl.kuba.drive.dto.model.AnswerDTO;
 import pl.kuba.drive.dto.model.QuestionDTO;
+import pl.kuba.drive.entity.Question;
 import pl.kuba.drive.exception.ControllerException;
 import pl.kuba.drive.exception.ErrorMessage;
 import pl.kuba.drive.repository.QuestionRepository;
@@ -42,20 +43,13 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public QuestionDTO editNameById(Long id, String name) {
-        return questionMapper.toQuestionDTO(questionRepository.findById(id)
+    public QuestionDTO edit(QuestionDTO questionDTO) {
+        return questionMapper.toQuestionDTO(questionRepository.findById(questionDTO.getId())
                 .map(questionFromDb -> {
-                    questionFromDb.setName(name);
+                    questionFromDb.setName(questionDTO.getName());
+                    questionFromDb.setAnswers(answerMapper.toAnswers(questionDTO.getAnswers()));
                     return questionRepository.save(questionFromDb);
                 }).orElseThrow(() -> new ControllerException(ErrorMessage.NOT_FOUND)));
     }
 
-    @Override
-    public QuestionDTO editAnswersById(Long id, List<AnswerDTO> answers) {
-        return questionMapper.toQuestionDTO(questionRepository.findById(id)
-                .map(questionFromDb -> {
-                    questionFromDb.setAnswers(answerMapper.toAnswers(answers));
-                    return questionRepository.save(questionFromDb);
-                }).orElseThrow(() -> new ControllerException(ErrorMessage.NOT_FOUND)));
-    }
 }

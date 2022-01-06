@@ -2,6 +2,7 @@ package pl.kuba.drive.service.serviceImpl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.kuba.drive.dto.mapper.AdviceMapper;
 import pl.kuba.drive.dto.mapper.TagMapper;
 import pl.kuba.drive.dto.model.TagDTO;
 import pl.kuba.drive.exception.ControllerException;
@@ -16,6 +17,7 @@ public class TagServiceImpl implements TagService {
 
     private final TagRepository tagRepository;
     private final TagMapper tagMapper;
+    private final AdviceMapper adviceMapper;
 
     @Override
     public List<TagDTO> findAll() {
@@ -40,10 +42,11 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public TagDTO editNameById(Long id, String name) {
-        return tagMapper.toTagDTO(tagRepository.findById(id)
+    public TagDTO edit(TagDTO tagDTO) {
+        return tagMapper.toTagDTO(tagRepository.findById(tagDTO.getId())
             .map(tagFromDb -> {
-                tagFromDb.setName(name);
+                tagFromDb.setName(tagDTO.getName());
+                tagFromDb.setAdvices(adviceMapper.toAdvicesFromTag(tagDTO.getAdvices()));
                 return tagRepository.save(tagFromDb);
         }).orElseThrow(() -> new ControllerException(ErrorMessage.NOT_FOUND)));
     }

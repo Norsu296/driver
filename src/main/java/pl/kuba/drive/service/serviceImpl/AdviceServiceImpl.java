@@ -51,18 +51,10 @@ public class AdviceServiceImpl implements AdviceService {
             adviceFromDb.setTitle(advice.getTitle());
             adviceFromDb.setContent(advice.getContent());
             adviceFromDb.setQuestions(questionMapper.toQuestions(advice.getQuestions()));
+            adviceFromDb.setTags(tagMapper.toTagsFromAdvice(advice.getTags()));
             return adviceRepository.save(adviceFromDb);
         }).orElseThrow(() -> new ControllerException(ErrorMessage.NOT_FOUND)));
     }
 
-    @Override
-    public AdviceDTO editTagsByAdviceId(Long id, List<TagDTO> tags) {
-        return adviceMapper.toAdviceDTO(adviceRepository.findById(id)
-                .map(adviceFromDb -> {
-                    adviceFromDb.setTags(tagMapper.toTags(tags));
-                    return adviceRepository.save(adviceFromDb);
-                }).orElseThrow(() -> new ControllerException(ErrorMessage.NOT_FOUND)));
-
-    }
 
 }

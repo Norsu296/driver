@@ -4,6 +4,7 @@ import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import pl.kuba.drive.dto.model.TagDTO;
 import pl.kuba.drive.dto.model.TagDTO;
+import pl.kuba.drive.dto.model.TagToAdviceDTO;
 import pl.kuba.drive.entity.Tag;
 import pl.kuba.drive.entity.Tag;
 
@@ -22,6 +23,8 @@ public interface TagMapper {
 
     @InheritInverseConfiguration
     List<Tag> toTags(List<TagDTO> tagDTOs);
+
+    List<Tag> toTagsFromAdvice(List<TagToAdviceDTO> tagToAdviceDTOs);
   
     
 }

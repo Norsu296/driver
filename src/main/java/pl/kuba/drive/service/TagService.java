@@ -16,6 +16,6 @@ public interface TagService {
 
     void deleteById(Long id);
 
-    TagDTO editNameById(Long id, String name);
+    TagDTO edit(TagDTO tag);
     
 }

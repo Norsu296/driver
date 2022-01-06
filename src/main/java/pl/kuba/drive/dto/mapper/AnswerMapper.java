@@ -7,7 +7,7 @@ import pl.kuba.drive.entity.Answer;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {TagMapper.class})
+@Mapper(componentModel = "spring")
 public interface AnswerMapper {
 
     AnswerDTO toAnswerDTO(Answer answer);

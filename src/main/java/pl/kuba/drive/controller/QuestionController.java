@@ -35,16 +35,10 @@ public class QuestionController {
         questionService.deleteById(id);
     }
 
-    @PatchMapping("/{id}/name")
-    public QuestionDTO editName(@PathVariable Long id, @RequestBody String name){
-        return questionService.editNameById(id, name);
+    @PutMapping
+    public QuestionDTO edit(@RequestBody QuestionDTO questionDTO){
+        return questionService.edit(questionDTO);
     }
-
-    @PatchMapping("/{id}/answers")
-    public QuestionDTO editAnswers(@PathVariable Long id, @RequestBody List<AnswerDTO> answers){
-        return questionService.editAnswersById(id, answers);
-    }
-    
     
     
 }
