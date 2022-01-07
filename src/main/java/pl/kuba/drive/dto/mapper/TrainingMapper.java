@@ -7,7 +7,7 @@ import pl.kuba.drive.entity.Training;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {TagMapper.class})
+@Mapper(componentModel = "spring")
 public interface TrainingMapper {
 
     TrainingDTO toTrainingDTO(Training training);

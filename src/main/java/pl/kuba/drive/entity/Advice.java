@@ -3,6 +3,7 @@ package pl.kuba.drive.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.Set;
 
@@ -15,6 +16,7 @@ public class Advice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
+    @Lob
     private String content;
     private int points;
 

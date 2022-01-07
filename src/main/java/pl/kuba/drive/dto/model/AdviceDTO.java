@@ -15,6 +15,6 @@ public class AdviceDTO {
     private String content;
     private int points;
     private List<TagToAdviceDTO> tags;
-    private Training training;
+    private TrainingDTO training;
 
 }
