@@ -26,10 +26,10 @@ public class Advice {
     )
     private List<Tag> tags;
 
-    @OneToMany(
-            mappedBy = "advice",
-            cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
-    private List<Question> questions;
+    @OneToOne
+    private Training training;
+
+
 
 
 }

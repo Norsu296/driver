@@ -23,6 +23,6 @@ public class Question {
     private List<Answer> answers = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Advice advice;
+    private Training training;
 
 }

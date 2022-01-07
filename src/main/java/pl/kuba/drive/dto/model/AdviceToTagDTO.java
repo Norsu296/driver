@@ -1,6 +1,7 @@
 package pl.kuba.drive.dto.model;
 
 import lombok.Data;
+import pl.kuba.drive.entity.Training;
 
 @Data
 public class AdviceToTagDTO {
@@ -9,5 +10,6 @@ public class AdviceToTagDTO {
     private String title;
     private String content;
     private int points;
+    private Training training;
 
 }

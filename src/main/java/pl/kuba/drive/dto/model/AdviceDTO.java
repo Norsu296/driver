@@ -2,6 +2,7 @@ package pl.kuba.drive.dto.model;
 
 import lombok.Data;
 import pl.kuba.drive.entity.Question;
+import pl.kuba.drive.entity.Training;
 
 import java.util.List;
 
@@ -14,6 +15,6 @@ public class AdviceDTO {
     private String content;
     private int points;
     private List<TagToAdviceDTO> tags;
-    private List<QuestionDTO> questions;
+    private Training training;
 
 }
