@@ -18,6 +18,9 @@ public class ControllerExceptionHandler {
         if (ErrorMessage.RESOURCE_EXISTS.equals(e.getError())){
             httpStatus = HttpStatus.CONFLICT;
         }
+        if(ErrorMessage.BAD_REQUEST.equals(e.getError())){
+            httpStatus = HttpStatus.BAD_REQUEST;
+        }
         return ResponseEntity.status(httpStatus).body(new ErrorInfo(e.getError().getMessage()));
     }
 }

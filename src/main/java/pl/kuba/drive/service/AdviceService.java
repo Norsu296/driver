@@ -19,5 +19,7 @@ public interface AdviceService {
 
     AdviceDTO edit(AdviceDTO advice);
 
+    AdviceDTO like(Long id, String action);
+
 
 }
