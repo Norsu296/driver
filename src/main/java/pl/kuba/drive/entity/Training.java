@@ -14,7 +14,7 @@ public class Training {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToMany(
-            mappedBy = "question",
+            mappedBy = "training",
             cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
     private List<Question> questions;
 

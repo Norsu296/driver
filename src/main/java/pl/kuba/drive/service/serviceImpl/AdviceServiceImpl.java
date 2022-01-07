@@ -50,7 +50,6 @@ public class AdviceServiceImpl implements AdviceService {
         .map(adviceFromDb -> {
             adviceFromDb.setTitle(advice.getTitle());
             adviceFromDb.setContent(advice.getContent());
-            adviceFromDb.setQuestions(questionMapper.toQuestions(advice.getQuestions()));
             adviceFromDb.setTags(tagMapper.toTagsFromAdvice(advice.getTags()));
             return adviceRepository.save(adviceFromDb);
         }).orElseThrow(() -> new ControllerException(ErrorMessage.NOT_FOUND)));
