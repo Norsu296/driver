@@ -25,6 +25,16 @@ public class AdviceController {
         return adviceService.findById(id);
     }
 
+    @GetMapping("/like/add/{id}")
+    public AdviceDTO addLike(@PathVariable Long id) {
+        return adviceService.like(id, "add");
+    }
+
+    @GetMapping("/like/remove/{id}")
+    public AdviceDTO removeLike(@PathVariable Long id) {
+        return adviceService.like(id, "remove");
+    }
+
     @PostMapping
     public AdviceDTO create(@RequestBody AdviceDTO adviceDTO) {
         return adviceService.create(adviceDTO);
@@ -36,7 +46,7 @@ public class AdviceController {
     }
 
     @PutMapping
-    public AdviceDTO edit(@RequestBody AdviceDTO adviceDTO){
+    public AdviceDTO edit(@RequestBody AdviceDTO adviceDTO) {
         return adviceService.edit(adviceDTO);
     }
 
