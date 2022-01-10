@@ -16,13 +16,11 @@ public class AdviceController {
 
     private final AdviceService adviceService;
 
-    @RolesAllowed("user")
     @GetMapping()
     public List<AdviceDTO> findAll() {
         return adviceService.findAll();
     }
 
-    @RolesAllowed("admin")
     @GetMapping("/{id}")
     public AdviceDTO findById(@PathVariable Long id) {
         return adviceService.findById(id);
