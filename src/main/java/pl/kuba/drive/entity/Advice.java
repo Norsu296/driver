@@ -31,6 +31,9 @@ public class Advice {
     @OneToOne
     private Training training;
 
+    @OneToMany(mappedBy = "advice")
+    private List<Photo> photos;
+
 
 
 

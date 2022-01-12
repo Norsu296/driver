@@ -10,6 +10,6 @@ public class AdviceToTagDTO {
     private String title;
     private String content;
     private int points;
-    private Training training;
+    private TrainingDTO training;
 
 }

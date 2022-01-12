@@ -1,7 +1,10 @@
 package pl.kuba.drive.service.serviceImpl;
 
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 import pl.kuba.drive.dto.mapper.AdviceMapper;
 import pl.kuba.drive.dto.mapper.QuestionMapper;
 import pl.kuba.drive.dto.mapper.TagMapper;
@@ -34,8 +37,8 @@ public class AdviceServiceImpl implements AdviceService {
     }
 
     @Override
-    public AdviceDTO create(AdviceDTO advice) {
-        return adviceMapper.toAdviceDTO(adviceRepository.save(adviceMapper.toAdvice(advice)));
+    public AdviceDTO create(AdviceDTO adviceDTO) {
+        return adviceMapper.toAdviceDTO(adviceRepository.save(adviceMapper.toAdvice(adviceDTO)));
     }
 
     @Override
