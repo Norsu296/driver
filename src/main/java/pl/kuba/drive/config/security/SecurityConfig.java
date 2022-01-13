@@ -1,4 +1,4 @@
-package pl.kuba.drive.config;
+package pl.kuba.drive.config.security;
 
 import org.keycloak.adapters.KeycloakConfigResolver;
 import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;

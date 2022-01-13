@@ -3,6 +3,7 @@ package pl.kuba.drive.service.serviceImpl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.kuba.drive.config.properties.ApiProperties;
 import pl.kuba.drive.dto.mapper.AdviceMapper;
 import pl.kuba.drive.dto.mapper.TagMapper;
 import pl.kuba.drive.dto.model.AdviceDTO;
@@ -21,6 +22,7 @@ import java.util.List;
 public class AdviceServiceImpl implements AdviceService {
 
     private final AdviceRepository adviceRepository;
+    private final ApiProperties apiProperties;
     private final AdviceMapper adviceMapper;
     private final TagMapper tagMapper;
 
@@ -29,13 +31,14 @@ public class AdviceServiceImpl implements AdviceService {
         return adviceMapper.toAdviceDTOs(adviceRepository.findAll());
     }
 
+
     @Override
     public AdviceDTO findById(Long id) {
         if(adviceRepository.findById(id).isPresent()){
             List<Photo> photos = adviceRepository.getById(id).getPhotos();
             List<String> photoPaths = new ArrayList<>();
             for(Photo photo : photos){
-                photoPaths.add("http://localhost:8080/photos/" + id + "/" + photo.getName());
+                photoPaths.add(apiProperties.getUrl() + "/photos/" + id + "/" + photo.getName());
             }
             AdviceDTO adviceDTO = adviceMapper.toAdviceDTO(adviceRepository.getById(id));
             adviceDTO.setPhotos(photoPaths);
