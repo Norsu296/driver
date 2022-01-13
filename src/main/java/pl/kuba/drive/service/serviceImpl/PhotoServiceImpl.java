@@ -5,22 +5,18 @@ import org.springframework.stereotype.Service;
 import pl.kuba.drive.entity.Photo;
 import pl.kuba.drive.exception.ControllerException;
 import pl.kuba.drive.exception.ErrorMessage;
-import pl.kuba.drive.exception.FileException;
 import pl.kuba.drive.repository.AdviceRepository;
 import pl.kuba.drive.repository.PhotoRepository;
 import pl.kuba.drive.repository.QuestionRepository;
 import pl.kuba.drive.service.PhotoService;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+
 
 
 @Service
@@ -55,13 +51,7 @@ public class PhotoServiceImpl implements PhotoService {
     }
 
     private String writeImage(String type, Long id, byte[] image) {
-        String path = "";
-        if (type.equals("advice")) {
-            path = System.getProperty("user.dir") + "/advice/";
-        } else if (type.equals("question")) {
-            path = System.getProperty("user.dir") + "/question/";
-        }
-
+        String path = System.getProperty("user.dir") + "/" + type + "/";
         String directoryName = path.concat(id.toString());
         String fileName = id + "_" + LocalDateTime.now().toString();
 
@@ -80,12 +70,7 @@ public class PhotoServiceImpl implements PhotoService {
     }
 
     private byte[] readImage(String type, Long id, String fileName) throws IOException {
-        Path path = Paths.get(System.getProperty("user.dir"));
-        if (type.equals("advice")) {
-            path = Paths.get(System.getProperty("user.dir") + "/advice/" + id.toString() + "/" + fileName + ".jpg");
-        } else if (type.equals("question")) {
-            path = Paths.get(System.getProperty("user.dir") + "/question/" + id.toString() + "/" + fileName + ".jpg");
-        }
+        Path path = Paths.get(System.getProperty("user.dir") + "/" + type + "/" + id.toString() + "/" + fileName + ".jpg");
         return Files.readAllBytes(path);
     }
 }
