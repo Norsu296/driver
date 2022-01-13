@@ -3,18 +3,17 @@ package pl.kuba.drive.service.serviceImpl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
 import pl.kuba.drive.dto.mapper.AdviceMapper;
-import pl.kuba.drive.dto.mapper.QuestionMapper;
 import pl.kuba.drive.dto.mapper.TagMapper;
 import pl.kuba.drive.dto.model.AdviceDTO;
 import pl.kuba.drive.entity.Advice;
+import pl.kuba.drive.entity.Photo;
 import pl.kuba.drive.exception.ControllerException;
 import pl.kuba.drive.exception.ErrorMessage;
 import pl.kuba.drive.repository.AdviceRepository;
 import pl.kuba.drive.service.AdviceService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -32,8 +31,17 @@ public class AdviceServiceImpl implements AdviceService {
 
     @Override
     public AdviceDTO findById(Long id) {
-        return adviceMapper.toAdviceDTO(adviceRepository.findById(id)
-                .orElseThrow(() -> new ControllerException(ErrorMessage.NOT_FOUND)));
+        if(adviceRepository.findById(id).isPresent()){
+            List<Photo> photos = adviceRepository.getById(id).getPhotos();
+            List<String> photoPaths = new ArrayList<>();
+            for(Photo photo : photos){
+                photoPaths.add("http://localhost:8080/photos/" + id + "/" + photo.getName());
+            }
+            AdviceDTO adviceDTO = adviceMapper.toAdviceDTO(adviceRepository.getById(id));
+            adviceDTO.setPhotos(photoPaths);
+            return adviceDTO;
+        }
+        throw new ControllerException(ErrorMessage.NOT_FOUND);
     }
 
     @Override

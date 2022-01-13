@@ -43,7 +43,8 @@ public class PhotoServiceImpl implements PhotoService {
     }
 
     private String writeImage(Long adviceID, byte[] image) {
-        String path = "/home/kuba/portfolio/driver/images/";
+        String path = System.getProperty("user.dir") + "/images";
+        System.out.println(System.getProperty("user.dir"));
         String directoryName = path.concat(adviceID.toString());
         String fileName = adviceID + "_" + LocalDateTime.now().toString();
 
@@ -61,7 +62,7 @@ public class PhotoServiceImpl implements PhotoService {
     }
 
     private byte[] readImage(Long adviceID, String fileName) throws IOException {
-        Path path = Paths.get("/home/kuba/portfolio/driver/images/" + adviceID.toString() + "/" + fileName + ".jpg");
+        Path path = Paths.get(System.getProperty("user.dir") + "/images" + adviceID.toString() + "/" + fileName + ".jpg");
         return Files.readAllBytes(path);
     }
 }
