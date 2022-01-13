@@ -31,7 +31,9 @@ public class Advice {
     @OneToOne
     private Training training;
 
-    @OneToMany(mappedBy = "advice")
+    @OneToMany(
+            cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "advice_id")
     private List<Photo> photos;
 
 

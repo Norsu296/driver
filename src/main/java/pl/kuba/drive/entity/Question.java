@@ -19,10 +19,13 @@ public class Question {
     @OneToMany(
             mappedBy = "question",
             cascade = {CascadeType.MERGE, CascadeType.PERSIST}
-            )
+    )
     private List<Answer> answers = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Training training;
+    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "question_id")
+    private List<Photo> photos;
 
 }

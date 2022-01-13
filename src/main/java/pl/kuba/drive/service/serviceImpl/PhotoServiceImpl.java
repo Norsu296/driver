@@ -7,6 +7,7 @@ import pl.kuba.drive.exception.ControllerException;
 import pl.kuba.drive.exception.ErrorMessage;
 import pl.kuba.drive.repository.AdviceRepository;
 import pl.kuba.drive.repository.PhotoRepository;
+import pl.kuba.drive.repository.QuestionRepository;
 import pl.kuba.drive.service.PhotoService;
 
 import java.io.BufferedWriter;
@@ -27,14 +28,24 @@ public class PhotoServiceImpl implements PhotoService {
 
     private final PhotoRepository photoRepository;
     private final AdviceRepository adviceRepository;
+    private final QuestionRepository questionRepository;
 
     @Override
-    public void upload(Long adviceID, byte[] image) {
-        Photo photo = new Photo();
-        photo.setAdvice(adviceRepository.findById(adviceID)
-                .orElseThrow(() -> new ControllerException(ErrorMessage.NOT_FOUND)));
-        photo.setName(writeImage(adviceID, image));
-        photoRepository.save(photo);
+    public void upload(String type, Long id, byte[] image) {
+        if (type.equals("advice")) {
+            Photo photo = new Photo();
+            photo.setAdvice(adviceRepository.findById(id)
+                    .orElseThrow(() -> new ControllerException(ErrorMessage.NOT_FOUND)));
+            photo.setName(writeImage(type, id, image));
+            photoRepository.save(photo);
+        } else if (type.equals("question")) {
+            Photo photo = new Photo();
+            photo.setQuestion(questionRepository.findById(id)
+                    .orElseThrow(() -> new ControllerException(ErrorMessage.NOT_FOUND)));
+            photo.setName(writeImage(type, id, image));
+            photoRepository.save(photo);
+        }
+
     }
 
     @Override
@@ -42,11 +53,15 @@ public class PhotoServiceImpl implements PhotoService {
         return readImage(adviceID, fileName);
     }
 
-    private String writeImage(Long adviceID, byte[] image) {
+    private String writeImage(String type, Long id, byte[] image) {
         String path = System.getProperty("user.dir") + "/images";
-        System.out.println(System.getProperty("user.dir"));
-        String directoryName = path.concat(adviceID.toString());
-        String fileName = adviceID + "_" + LocalDateTime.now().toString();
+
+        if (type.equals("advice")) path = path.concat("/advices");
+        if (type.equals("question")) path = path.concat("/questions");
+
+
+        String directoryName = path.concat(id.toString());
+        String fileName = id + "_" + LocalDateTime.now().toString();
 
         File directory = new File(directoryName);
         if (!directory.exists()) {

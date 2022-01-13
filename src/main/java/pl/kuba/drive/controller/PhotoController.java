@@ -16,9 +16,9 @@ public class PhotoController {
     private final PhotoService photoService;
 
 
-    @PostMapping(value = "/{adviceID}")
-    public void upload(@PathVariable Long adviceID, @RequestBody byte[] image){
-       photoService.upload(adviceID, image);
+    @PostMapping(value = "/{type}/{id}")
+    public void upload(@PathVariable String type, @PathVariable Long id, @RequestBody byte[] image){
+       photoService.upload(type, id, image);
     }
 
     @GetMapping(value = "/{adviceID}/{fileName}", produces = MediaType.IMAGE_JPEG_VALUE)

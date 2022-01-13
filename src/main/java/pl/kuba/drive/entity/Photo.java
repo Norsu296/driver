@@ -15,8 +15,9 @@ public class Photo {
     private Long id;
     private String name;
     @ManyToOne
-    @JoinColumn(name = "advice_id")
     private Advice advice;
+    @ManyToOne
+    private Question question;
 
 
 }
