@@ -5,6 +5,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import pl.kuba.drive.dto.model.AdviceDTO;
 import pl.kuba.drive.dto.model.AdviceToTagDTO;
+import pl.kuba.drive.dto.model.AdviceShortDTO;
 import pl.kuba.drive.entity.Advice;
 
 import java.util.List;
@@ -27,5 +28,15 @@ public interface AdviceMapper {
     List<Advice> toAdvices(List<AdviceDTO> adviceDTOs);
 
     List<Advice> toAdvicesFromTag(List<AdviceToTagDTO> adviceToTagDTOs);
+
+    AdviceShortDTO toAdviceShortDTO(Advice adviceShort);
+
+    List<AdviceShortDTO> toAdviceShortDTOs(List<Advice> adviceShort);
+
+    @InheritInverseConfiguration
+    Advice toAdviceShort(AdviceShortDTO adviceShortDTO);
+
+    @InheritInverseConfiguration
+    List<Advice> toAdviceShorts(List<AdviceShortDTO> adviceShortDTOs);
 
 }

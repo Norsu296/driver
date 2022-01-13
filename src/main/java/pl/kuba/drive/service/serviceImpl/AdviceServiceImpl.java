@@ -7,6 +7,7 @@ import pl.kuba.drive.config.properties.ApiProperties;
 import pl.kuba.drive.dto.mapper.AdviceMapper;
 import pl.kuba.drive.dto.mapper.TagMapper;
 import pl.kuba.drive.dto.model.AdviceDTO;
+import pl.kuba.drive.dto.model.AdviceShortDTO;
 import pl.kuba.drive.entity.Advice;
 import pl.kuba.drive.entity.Photo;
 import pl.kuba.drive.exception.ControllerException;
@@ -27,8 +28,8 @@ public class AdviceServiceImpl implements AdviceService {
     private final TagMapper tagMapper;
 
     @Override
-    public List<AdviceDTO> findAll() {
-        return adviceMapper.toAdviceDTOs(adviceRepository.findAll());
+    public List<AdviceShortDTO> findAll() {
+        return adviceMapper.toAdviceShortDTOs(adviceRepository.findAll());
     }
 
 

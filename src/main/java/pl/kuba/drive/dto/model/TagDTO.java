@@ -9,6 +9,6 @@ public class TagDTO {
 
     private Long id;
     private String name;
-    private List<AdviceToTagDTO> advices;
+    private List<AdviceShortDTO> advices;
 
 }

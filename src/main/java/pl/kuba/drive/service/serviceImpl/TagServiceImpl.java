@@ -46,7 +46,7 @@ public class TagServiceImpl implements TagService {
         return tagMapper.toTagDTO(tagRepository.findById(tagDTO.getId())
             .map(tagFromDb -> {
                 tagFromDb.setName(tagDTO.getName());
-                tagFromDb.setAdvices(adviceMapper.toAdvicesFromTag(tagDTO.getAdvices()));
+                tagFromDb.setAdvices(adviceMapper.toAdviceShorts(tagDTO.getAdvices()));
                 return tagRepository.save(tagFromDb);
         }).orElseThrow(() -> new ControllerException(ErrorMessage.NOT_FOUND)));
     }

@@ -3,6 +3,7 @@ package pl.kuba.drive.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import pl.kuba.drive.dto.model.AdviceDTO;
+import pl.kuba.drive.dto.model.AdviceShortDTO;
 import pl.kuba.drive.dto.model.TagDTO;
 import pl.kuba.drive.service.AdviceService;
 
@@ -17,7 +18,7 @@ public class AdviceController {
     private final AdviceService adviceService;
 
     @GetMapping()
-    public List<AdviceDTO> findAll() {
+    public List<AdviceShortDTO> findAll() {
         return adviceService.findAll();
     }
 
