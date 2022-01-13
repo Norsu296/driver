@@ -11,7 +11,7 @@ import pl.kuba.drive.entity.Tag;
 import java.util.List;
 import java.util.Set;
 
-@Mapper(componentModel = "spring", uses = {AdviceMapper.class})
+@Mapper(componentModel = "spring", uses = {AdviceMapper.class, QuestionMapper.class})
 public interface TagMapper {
 
     TagDTO toTagDTO(Tag tag);

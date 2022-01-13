@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import pl.kuba.drive.entity.Photo;
 import pl.kuba.drive.exception.ControllerException;
 import pl.kuba.drive.exception.ErrorMessage;
+import pl.kuba.drive.exception.FileException;
 import pl.kuba.drive.repository.AdviceRepository;
 import pl.kuba.drive.repository.PhotoRepository;
 import pl.kuba.drive.repository.QuestionRepository;
@@ -49,16 +50,17 @@ public class PhotoServiceImpl implements PhotoService {
     }
 
     @Override
-    public byte[] download(Long adviceID, String fileName) throws IOException {
-        return readImage(adviceID, fileName);
+    public byte[] download(String type, Long id, String fileName) throws IOException {
+        return readImage(type, id, fileName);
     }
 
     private String writeImage(String type, Long id, byte[] image) {
-        String path = System.getProperty("user.dir") + "/images";
-
-        if (type.equals("advice")) path = path.concat("/advices");
-        if (type.equals("question")) path = path.concat("/questions");
-
+        String path = "";
+        if (type.equals("advice")) {
+            path = System.getProperty("user.dir") + "/advice/";
+        } else if (type.equals("question")) {
+            path = System.getProperty("user.dir") + "/question/";
+        }
 
         String directoryName = path.concat(id.toString());
         String fileName = id + "_" + LocalDateTime.now().toString();
@@ -71,13 +73,19 @@ public class PhotoServiceImpl implements PhotoService {
         try {
             Files.write(filePath, image);
         } catch (IOException e) {
+            System.out.println("eeee");
             e.printStackTrace();
         }
         return fileName;
     }
 
-    private byte[] readImage(Long adviceID, String fileName) throws IOException {
-        Path path = Paths.get(System.getProperty("user.dir") + "/images" + adviceID.toString() + "/" + fileName + ".jpg");
+    private byte[] readImage(String type, Long id, String fileName) throws IOException {
+        Path path = Paths.get(System.getProperty("user.dir"));
+        if (type.equals("advice")) {
+            path = Paths.get(System.getProperty("user.dir") + "/advice/" + id.toString() + "/" + fileName + ".jpg");
+        } else if (type.equals("question")) {
+            path = Paths.get(System.getProperty("user.dir") + "/question/" + id.toString() + "/" + fileName + ".jpg");
+        }
         return Files.readAllBytes(path);
     }
 }

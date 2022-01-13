@@ -3,12 +3,14 @@ package pl.kuba.drive.dto.mapper;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import pl.kuba.drive.dto.model.TrainingDTO;
+import pl.kuba.drive.entity.Photo;
 import pl.kuba.drive.entity.Training;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {QuestionMapper.class})
 public interface TrainingMapper {
+
 
     TrainingDTO toTrainingDTO(Training training);
 
@@ -19,5 +21,6 @@ public interface TrainingMapper {
 
     @InheritInverseConfiguration
     List<Training> toTrainings(List<TrainingDTO> trainingDTOs);
+
 
 }

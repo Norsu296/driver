@@ -5,8 +5,8 @@ import java.util.List;
 
 public interface PhotoService {
 
-    void upload(String type, Long adviceID, byte[] image);
+    void upload(String type, Long id, byte[] image);
 
-    byte[] download(Long adviceID, String fileName) throws IOException;
+    byte[] download(String type, Long id, String fileName) throws IOException;
 
 }

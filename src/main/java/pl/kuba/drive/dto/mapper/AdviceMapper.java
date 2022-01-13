@@ -10,7 +10,7 @@ import pl.kuba.drive.entity.Advice;
 import java.util.List;
 
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {QuestionMapper.class})
 public interface AdviceMapper {
 
     @Mapping(target = "photos", ignore = true)

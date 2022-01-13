@@ -21,9 +21,9 @@ public class PhotoController {
        photoService.upload(type, id, image);
     }
 
-    @GetMapping(value = "/{adviceID}/{fileName}", produces = MediaType.IMAGE_JPEG_VALUE)
-    public byte[] download(@PathVariable Long adviceID, @PathVariable String fileName) throws IOException {
-        return photoService.download(adviceID, fileName);
+    @GetMapping(value = "/{type}/{id}/{fileName}", produces = MediaType.IMAGE_JPEG_VALUE)
+    public byte[] download(@PathVariable String type, @PathVariable Long id, @PathVariable String fileName) throws IOException {
+        return photoService.download(type, id, fileName);
     }
 
 }
