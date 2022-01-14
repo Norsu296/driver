@@ -41,6 +41,8 @@ public class PhotoServiceImpl implements PhotoService {
                     .orElseThrow(() -> new ControllerException(ErrorMessage.NOT_FOUND)));
             photo.setName(writeImage(type, id, image));
             photoRepository.save(photo);
+        } else {
+            throw new ControllerException(ErrorMessage.BAD_REQUEST);
         }
 
     }
