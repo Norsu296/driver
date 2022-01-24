@@ -6,6 +6,7 @@ import pl.kuba.drive.model.BaseEntity;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "users_points")
 @Data
 public class UserPoints extends BaseEntity {
 
