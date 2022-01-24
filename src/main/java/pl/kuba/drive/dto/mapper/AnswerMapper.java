@@ -11,12 +11,12 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface AnswerMapper {
 
-    @Mapping(target = "checked", ignore = true)
+
     AnswerDTO toAnswerDTO(Answer answer);
 
     List<AnswerDTO> toAnswerDTOs(List<Answer> answer);
 
-    @Mapping(target = "checked", ignore = true)
+
     @InheritInverseConfiguration
     Answer toAnswer(AnswerDTO answerDTO);
 
