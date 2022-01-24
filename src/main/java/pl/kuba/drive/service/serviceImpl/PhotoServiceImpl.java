@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import pl.kuba.drive.entity.Photo;
 import pl.kuba.drive.exception.ControllerException;
 import pl.kuba.drive.exception.ErrorMessage;
+import pl.kuba.drive.model.PhotoCollector;
 import pl.kuba.drive.repository.AdviceRepository;
 import pl.kuba.drive.repository.PhotoRepository;
 import pl.kuba.drive.repository.QuestionRepository;
@@ -29,13 +30,13 @@ public class PhotoServiceImpl implements PhotoService {
 
     @Override
     public void upload(String type, Long id, byte[] image) {
-        if (type.equals("advice")) {
+        if (type.equals(PhotoCollector.ADVICE.toString())) {
             Photo photo = new Photo();
             photo.setAdvice(adviceRepository.findById(id)
                     .orElseThrow(() -> new ControllerException(ErrorMessage.NOT_FOUND)));
             photo.setName(writeImage(type, id, image));
             photoRepository.save(photo);
-        } else if (type.equals("question")) {
+        } else if (type.equals(PhotoCollector.QUESTION.toString())) {
             Photo photo = new Photo();
             photo.setQuestion(questionRepository.findById(id)
                     .orElseThrow(() -> new ControllerException(ErrorMessage.NOT_FOUND)));

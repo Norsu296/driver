@@ -39,7 +39,7 @@ public class AdviceServiceImpl implements AdviceService {
             List<Photo> photos = adviceRepository.getById(id).getPhotos();
             List<String> photoPaths = new ArrayList<>();
             for(Photo photo : photos){
-                photoPaths.add(apiProperties.getUrl() + "/photos/advice" + id + "/" + photo.getName());
+                photoPaths.add(apiProperties.getUrl() + "/photos/advice/" + id + "/" + photo.getName());
             }
             AdviceDTO adviceDTO = adviceMapper.toAdviceDTO(adviceRepository.getById(id));
             adviceDTO.setPhotos(photoPaths);
