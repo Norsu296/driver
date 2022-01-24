@@ -16,4 +16,5 @@ public class AnswerDTO {
     @NotNull(message = "Field correct cannot be empty")
     private boolean correct;
 
+    private boolean checked;
 }
