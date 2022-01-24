@@ -1,14 +1,14 @@
 package pl.kuba.drive.entity;
 
 import lombok.Data;
+import pl.kuba.drive.model.BaseEntity;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "photos")
 @Data
-public class Photo {
+public class Photo extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

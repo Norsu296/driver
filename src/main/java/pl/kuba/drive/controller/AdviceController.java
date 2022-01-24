@@ -4,10 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import pl.kuba.drive.dto.model.AdviceDTO;
 import pl.kuba.drive.dto.model.AdviceShortDTO;
-import pl.kuba.drive.dto.model.TagDTO;
 import pl.kuba.drive.service.AdviceService;
 
-import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController

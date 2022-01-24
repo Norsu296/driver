@@ -1,7 +1,6 @@
 package pl.kuba.drive.service;
 
 import java.io.IOException;
-import java.util.List;
 
 public interface PhotoService {
 

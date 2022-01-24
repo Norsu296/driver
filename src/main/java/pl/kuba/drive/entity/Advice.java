@@ -1,16 +1,15 @@
 package pl.kuba.drive.entity;
 
 import lombok.Data;
+import pl.kuba.drive.model.BaseEntity;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "advices")
 @Data
-public class Advice {
+public class Advice extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

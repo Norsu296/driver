@@ -1,7 +1,6 @@
 package pl.kuba.drive.dto.model;
 
 import lombok.Data;
-import pl.kuba.drive.entity.Training;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;

@@ -1,6 +1,7 @@
 package pl.kuba.drive.entity;
 
 import lombok.Data;
+import pl.kuba.drive.model.BaseEntity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 @Entity
 @Table(name = "trainings")
 @Data
-public class Training {
+public class Training extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

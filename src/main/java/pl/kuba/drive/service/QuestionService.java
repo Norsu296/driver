@@ -1,7 +1,6 @@
 package pl.kuba.drive.service;
 
 import org.springframework.stereotype.Service;
-import pl.kuba.drive.dto.model.AnswerDTO;
 import pl.kuba.drive.dto.model.QuestionDTO;
 
 import java.util.List;

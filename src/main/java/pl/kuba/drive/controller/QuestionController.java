@@ -2,7 +2,6 @@ package pl.kuba.drive.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import pl.kuba.drive.dto.model.AnswerDTO;
 import pl.kuba.drive.dto.model.QuestionDTO;
 import pl.kuba.drive.service.QuestionService;
 

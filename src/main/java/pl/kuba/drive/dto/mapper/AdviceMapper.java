@@ -4,8 +4,8 @@ import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import pl.kuba.drive.dto.model.AdviceDTO;
-import pl.kuba.drive.dto.model.AdviceToTagDTO;
 import pl.kuba.drive.dto.model.AdviceShortDTO;
+import pl.kuba.drive.dto.model.AdviceToTagDTO;
 import pl.kuba.drive.entity.Advice;
 
 import java.util.List;
