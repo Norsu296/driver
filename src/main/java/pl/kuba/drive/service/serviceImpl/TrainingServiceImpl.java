@@ -80,7 +80,7 @@ public class TrainingServiceImpl implements TrainingService {
 
         UserPoints userPoints = new UserPoints();
         userPoints.setPoints(points);
-        userPoints.setTraining(trainingMapper.toTraining(trainingDTO));
+        userPoints.setTraining(trainingRepository.getById(trainingDTO.getId()));
 
         userPointsRepository.save(userPoints);
 
