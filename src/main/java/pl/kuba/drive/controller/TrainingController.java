@@ -3,6 +3,7 @@ package pl.kuba.drive.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import pl.kuba.drive.dto.model.TrainingDTO;
+import pl.kuba.drive.dto.model.TrainingResultDTO;
 import pl.kuba.drive.service.TrainingService;
 
 import java.util.List;
@@ -39,5 +40,9 @@ public class TrainingController {
         return trainingService.edit(trainingDTO);
     }
 
+    @PostMapping("/result")
+    public TrainingResultDTO getResult(@RequestBody TrainingDTO trainingDTO){
+        return trainingService.getResult(trainingDTO);
+    }
 
 }
