@@ -6,7 +6,6 @@ import lombok.Data;
 public class TrainingResultDTO {
 
     private int points;
-    private int percents;
     private int maxPoints;
 
 }

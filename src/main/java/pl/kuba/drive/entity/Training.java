@@ -16,8 +16,7 @@ public class Training extends BaseEntity {
     private Long id;
     @OneToMany(
             mappedBy = "training",
-            cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
+            cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Question> questions;
-
 
 }
