@@ -66,16 +66,16 @@ public class TrainingServiceImpl implements TrainingService {
         for (QuestionDTO questionDTO : questionDTOs) {
             List<AnswerDTO> answerDTOs = questionDTO.getAnswers();
             for (AnswerDTO answerDTO : answerDTOs) {
-                if (answerDTO.isChecked() == answerDTO.isCorrect()) {
-                    points++;
+                if (answerDTO.isChecked()){
+                    if(answerDTO.isCorrect()){
+                        points++;
+                    }
                 }
             }
         }
 
-        int percents = points / maxPoints * 100;
 
         trainingResultDTO.setPoints(points);
-        trainingResultDTO.setPercents(percents);
         trainingResultDTO.setMaxPoints(maxPoints);
 
         UserPoints userPoints = new UserPoints();
